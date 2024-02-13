@@ -37,8 +37,9 @@ if submit:
     if file and query:
         st.write("lookign for:",query)
         directory = f"pdf_files/{id}"
-        content = save_pdf_to_directory(file,directory)
-        st.write(content)
+        save_pdf_to_directory(file,directory)
+        documents = load_docs(directory)
+        st.write(documents)
         
     elif file:
         st.error("Enter the query first")

@@ -1,10 +1,10 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from utils import *
 import uuid
 
-load_dotenv()
+#load_dotenv()
 
 st.title("Custom Chatbot")
 

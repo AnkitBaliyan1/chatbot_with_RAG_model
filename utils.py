@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 
 def save_pdf_to_directory(uploaded_file, directory):
     if uploaded_file is not None:
@@ -15,3 +16,7 @@ def save_pdf_to_directory(uploaded_file, directory):
         st.success(f"File '{uploaded_file.name}' saved successfully!")
 
 
+def load_docs(dir):
+  loader = PyPDFDirectoryLoader(dir)
+  documents = loader.load()
+  return documents

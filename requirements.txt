@@ -2,3 +2,6 @@ streamlit
 uuid
 langchain_community
 pypdf
+langchain
+langchain_openai
+pinecone

@@ -4,6 +4,5 @@ langchain_community
 pypdf
 langchain
 langchain_openai
-pinecone
 datetime
 time

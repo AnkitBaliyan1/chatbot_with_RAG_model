@@ -5,3 +5,5 @@ pypdf
 langchain
 langchain_openai
 pinecone
+datetime
+time

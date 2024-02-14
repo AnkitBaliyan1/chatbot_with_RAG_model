@@ -46,8 +46,8 @@ def get_embeddings():
 
 def push_to_pinecone(docs, embedding):
 
-    pc = PineconeClient(api_key="9fe6ffcf-09a0-4f3c-9b30-e76fdf938dd5")
-    index_name="chatbotdb"
+    pc = PineconeClient(api_key=os.environ.get("PINECONE_API_KEY"))
+    index_name=os.environ.get("PINECONE_INDEX_NAME")
     index = pc.Index(index_name)
 
     index.delete(delete_all=True, namespace='rag_bot')    
@@ -72,8 +72,8 @@ def push_to_pinecone(docs, embedding):
 #Function to pull index data from Pinecone
 def pull_from_pinecone(embeddings):
 
-    pinecone_apikey = "9fe6ffcf-09a0-4f3c-9b30-e76fdf938dd5"
-    pinecone_index_name ="chatbotdb"
+    pinecone_apikey = os.environ.get("PINECONE_API_KEY")
+    pinecone_index_name =os.environ.get("PINECONE_INDEX_NAME")
 
     PineconeClient(
     api_key=pinecone_apikey
@@ -89,8 +89,8 @@ def pull_from_pinecone(embeddings):
 
 def get_similar_doc(query, embedding,k=2):
 
-    pc = PineconeClient(api_key="9fe6ffcf-09a0-4f3c-9b30-e76fdf938dd5")
-    index_name="chatbotdb"
+    pc = PineconeClient(api_key=os.environ.get("PINECONE_API_KEY"))
+    index_name=os.environ.get("PINECONE_INDEX_NAME")
     index = pc.Index(index_name)
 
     index = pull_from_pinecone(embeddings=embedding)

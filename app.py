@@ -16,14 +16,15 @@ def main():
         st.session_state["bot_ready_flag"]=''
 
 
-    st.sidebar.title("😎🗝️")
+    # st.sidebar.title("😎🗝️")
 
-    st.session_state["OPENAI_API_KEY"]=st.sidebar.text_input("Enter your API key?", type="password")
-    os.environ["OPENAI_API_KEY"] = st.session_state["OPENAI_API_KEY"]
+    # st.session_state["OPENAI_API_KEY"]=st.sidebar.text_input("Enter your API key?", type="password")
+    # os.environ["OPENAI_API_KEY"] = st.session_state["OPENAI_API_KEY"]
     
 
     st.session_state["unique_id"] = uuid.uuid4().hex
     unique_id = st.session_state["unique_id"]
+    os.environ["NAMESPACE"] = unique_id
 
     files = st.sidebar.file_uploader("Upload your file", type="pdf",accept_multiple_files=True)
 
@@ -40,7 +41,7 @@ def main():
         embedding = get_embeddings()
 
         with st.spinner("Wait! ChatBot is Learning ✋🏻"):
-            push_to_pinecone(tiny_docs, embedding)
+            push_to_pinecone(tiny_docs, embedding, os.environ.get("NAMESPACE"))
             st.session_state["bot_ready_flag"] = True
 
 

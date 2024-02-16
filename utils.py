@@ -44,13 +44,18 @@ def get_embeddings():
     return embedding
 
 
-def push_to_pinecone(docs, embedding):
+def push_to_pinecone(docs, embedding,namespace):
 
     pc = PineconeClient(api_key=os.environ.get("PINECONE_API_KEY"))
     index_name=os.environ.get("PINECONE_INDEX_NAME")
     index = pc.Index(index_name)
 
-    index.delete(delete_all=True, namespace='rag_bot')    
+    index_dict = index.describe_index_stats()
+    namespace_list = list(index_dict["namespaces"].keys())
+    if "rag_bot" in namespace_list:
+        index.delete(delete_all=True, namespace='rag_bot')
+    else:
+        pass
     
     vector = []
     for i, doc in enumerate(docs):
@@ -62,8 +67,8 @@ def push_to_pinecone(docs, embedding):
     
     index = Pinecone.from_documents(docs, embedding, index_name = index_name, namespace='rag_bot')
 
-    st.sidebar.write("This 30 seconds delay is added Manually... \n(because I'm using some free resources)")
-    time.sleep(30)
+    st.sidebar.write("This 35 seconds delay was added Manually... \n(because I'm using some free resources)")
+    time.sleep(35)
 
     return index
 
@@ -87,7 +92,7 @@ def pull_from_pinecone(embeddings):
 
 
 
-def get_similar_doc(query, embedding,k=2):
+def get_similar_doc(query, embedding, k=2):
 
     pc = PineconeClient(api_key=os.environ.get("PINECONE_API_KEY"))
     index_name=os.environ.get("PINECONE_INDEX_NAME")

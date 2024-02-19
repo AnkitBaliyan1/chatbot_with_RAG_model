@@ -2,7 +2,8 @@
 
 This project implements a custom chatbot using Streamlit, integrating document indexing and retrieval functionalities using Pinecone and language model capabilities from OpenAI.
 
-![photo](custom_chatbot_flow.png)
+<img width="1314" alt="Screenshot 2024-02-19 at 1 09 26 PM" src="https://github.com/AnkitBaliyan1/st-RAG-custom-chatbot/assets/86275544/b0d55b3b-42be-423b-9aa4-47f0357fd517">
+
 
 ## Features
 
@@ -20,6 +21,10 @@ This project implements a custom chatbot using Streamlit, integrating document i
 - **Python**: Programming language used for backend development.
 - **PDF Miner**: For extracting text from PDF documents.
 - **UUID**: For generating unique identifiers for document indexing.
+
+## Workflow
+
+![photo](custom_chatbot_flow.png)
 
 ## Installation
 
@@ -59,3 +64,8 @@ This project implements a custom chatbot using Streamlit, integrating document i
 ## Acknowledgments
 
 - Special thanks to the developers of Streamlit, Pinecone, and OpenAI for their excellent tools and APIs.
+
+
+## Application Link
+
+Check out the web Application here -> [link](https://customchatbot-byankit.streamlit.app)
